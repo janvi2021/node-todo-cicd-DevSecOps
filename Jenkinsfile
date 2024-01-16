@@ -28,7 +28,6 @@ pipeline {
                 echo 'image push ho gaya'
                 }
             }
-        }
         stage("deploy"){
             steps{
                 sh "docker-compose down && docker-compose up -d"
@@ -36,4 +35,5 @@ pipeline {
             }
         }
     }
+}
 
