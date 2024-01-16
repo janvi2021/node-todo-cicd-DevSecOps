@@ -26,8 +26,8 @@ pipeline {
                 sh "docker tag node-app-test-new:latest chayandeokar/node-app-test-new:latest"
                 sh "docker push chayandeokar/node-app-test-new:latest"
                 echo 'image push ho gaya'
-                }
             }
+        }
         stage("deploy"){
             steps{
                 sh "docker-compose down && docker-compose up -d"
