@@ -22,10 +22,12 @@ pipeline {
         }
         stage("push"){
             steps{
-                sh "docker login -u chayandeokar -p Chayan@294"
-                sh "docker tag node-app-test-new:latest chayandeokar/node-app-test-new:latest"
-                sh "docker push chayandeokar/node-app-test-new:latest"
+                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker tag node-app-test-new:latest ${env.dockerHubUser}/node-app-test-new:latest"
+                sh "docker push ${env.dockerHubUser}/node-app-test-new:latest"
                 echo 'image push ho gaya'
+                }
             }
         }
         stage("deploy"){
