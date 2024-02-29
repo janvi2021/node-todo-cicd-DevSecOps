@@ -21,3 +21,5 @@ test
 
 
 for testing it generally Work on Port so when we decompos check port no
+
+public ip and port no 
