@@ -1,6 +1,6 @@
-FROM node:12.2.0-alpine ##download required things
+FROM node:12.2.0-alpine 
 WORKDIR app ##Create Directory 
-COPY . . ## Copy the data into directory 
+COPY . .  
 RUN npm install
 RUN npm run test
 EXPOSE 8000
