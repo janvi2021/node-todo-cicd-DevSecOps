@@ -19,6 +19,7 @@ or Run by docker compose
 
 test
 
+we can implement kubernetes to automatic it
 
 for testing it generally Work on Port so when we decompos check port no
 
