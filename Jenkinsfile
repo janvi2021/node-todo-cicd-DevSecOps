@@ -5,8 +5,8 @@ pipeline {
         
         stage("code"){
             steps{
-                git url: "https://github.com/chayandeokar/node-todo-cicd.git", branch: "master"
-                echo 'bhaiyya code clone ho gaya'
+                git url: "https://github.com/janvi2021/node-todo-cicd-DevSecOps", branch: "master"
+                echo 'code clone ho gaya'
             }
         }
         stage("build and test"){
@@ -22,19 +22,14 @@ pipeline {
         }
         stage("push"){
             steps{
-                sh "docker login -u chayandeokar -p  "
-                sh "docker tag node-app-test-new:latest chayandeokar/node-app-test-new:latest"
-                sh "docker push chayandeokar/node-app-test-new:latest"
+                sh "docker login -u janvi20 -p  "
+                sh "docker tag node-app-test-new:latest janvi20/node-app-test-new:latest"
+                sh "docker push janvi20/node-app-test-new:latest"
                 echo 'image push ho gaya'
                 
             }
         }
-        stage("deploy"){
-            steps{
-                sh "docker-compose down && docker-compose up -d"
-                echo 'deployment ho gayi'
-            }
-        }
+        
     }
 }
 
