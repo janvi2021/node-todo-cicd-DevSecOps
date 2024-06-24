@@ -22,7 +22,7 @@ pipeline {
         }
         stage("push"){
             steps{
-                sh "docker login -u janvi20 p  "
+                sh "docker login -u janvi20  "
                 sh "docker tag node-app-test-new:latest janvi20/node-app-test-new:latest"
                 sh "docker push janvi20/node-app-test-new:latest"
                 echo 'image push ho gaya'
