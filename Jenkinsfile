@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment{
-        SONAR_HOME= tool "sonar"
-    }    
+    // environment{
+    //     SONAR_HOME= tool "sonar"
+    // }    
     
     stages {
         
@@ -13,13 +13,13 @@ pipeline {
             }
         }
         
-        stage("SonarQube Analysis"){
-            steps{
-                withSonarQubeEnv("sonar-server"){
-                    sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=nodetodo -Dsonar.projectKey=nodetodo"
-                }
-            }
-        }
+        // stage("SonarQube Analysis"){
+        //     steps{
+        //         withSonarQubeEnv("sonar-server"){
+        //             sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=nodetodo -Dsonar.projectKey=nodetodo"
+        //         }
+        //     }
+        // }
 
         
         stage("build and test"){
