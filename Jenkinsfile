@@ -37,15 +37,29 @@ pipeline {
         }
         
         
-        // stage("push"){
-        //     steps{
-        //         sh "docker login -u janvi20  "
-        //         sh "docker tag node-app-test-new:latest janvi20/node-app-test-new:latest"
-        //         sh "docker push janvi20/node-app-test-new:latest"
-        //         echo 'image push ho gaya'
+        stage("push"){
+            steps{
+                // sh "docker login -u janvi20  "
+                withDockerRegistry(credentialsId: 'dockerhub-credentials-id', toolName: 'docker') {
+                // withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                sh "docker tag node-app-test-new:latest janvi20/node-app-test-new:latest"
+                sh "docker push janvi20/node-app-test-new:latest"
+                echo 'image push ho gaya'
                 
-        //     }
-        // }
+            }
+        }
+    }
+      // stage("Docker Build & Push"){
+      //       steps{
+      //           script{
+      //              withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
+      //                  sh "docker build --build-arg TMDB_V3_API_KEY=<yourapikey> -t netflix ."
+      //                  sh "docker tag netflix nasi101/netflix:latest "
+      //                  sh "docker push nasi101/netflix:latest "
+      //               }
+      //           }
+      //       }
+      //   }
         
     }
 }
