@@ -40,7 +40,7 @@ pipeline {
         stage("push"){
             steps{
                 // sh "docker login -u janvi20  "
-                withDockerRegistry(credentialsId: 'dockerhub-credentials-id', toolName: 'docker') {
+                withDockerRegistry(credentialsId: 'dockerhub-credentials-id') {
                 // withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
                 sh "docker tag node-app-test-new:latest janvi20/node-app-test-new:latest"
                 sh "docker push janvi20/node-app-test-new:latest"
